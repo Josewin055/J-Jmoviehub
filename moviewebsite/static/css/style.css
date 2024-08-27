@@ -1,0 +1,120 @@
+/* static/css/styles.css */
+/* Ensure uniform image size */
+.card-img-top {
+    width: 100%;
+    height: 200px;  /* Set the height as needed */
+    object-fit: cover;  /* Ensure images are cropped to fit the size */
+}
+/* Hero Section */
+/* Set background image with dark overlay */
+.hero {
+    position: relative;
+    background-image: url('/static/images/background.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color for better visibility */
+    padding: 100px 0; /* Add padding to give space for content */
+    overflow: hidden; /* Ensure no overflow issues */
+}
+
+/* Dark overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: 1; /* Place it above the background image */
+}
+
+/* Ensure content is above the overlay */
+.hero .container {
+    position: relative;
+    z-index: 2; /* Make sure the content is above the overlay */
+}
+sure all cards have equal height */
+.card {
+    height: 100%;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;  /* Adjust as needed */
+    object-fit: cover;  /* Ensures the image covers the area */
+}
+
+.card-body {
+    flex: 1;  /* Allows the card body to expand to fill available space */
+}
+
+.card-title {
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    flex: 1;  /* Allows the card text to expand */
+}
+
+.btn-primary {
+    margin-top: auto;  /* Pushes the button to the bottom */
+}
+
+/* Movie Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Ensure the body takes up at least 100% of the viewport height */
+.my_footer{
+    text-align: center;
+    padding: 0;
+    position:fixed;
+    right:0;
+    left:0;
+    bottom:0;
+}
+.my_footer p{
+    color: #343434;
+    margin: 5px;
+    font-size: 14px;
+    padding: 0px;
+}
+
+/* Flexbox to ensure the content area grows */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Push the review section to the bottom */
+.review-section {
+    margin-top: auto; /* Pushes the review section to the bottom of the container */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background for review section */
+    border-top: 1px solid #ddd; /* Border to separate from content */
+}

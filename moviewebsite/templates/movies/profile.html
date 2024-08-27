@@ -1,0 +1,25 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>My Profile</h2>
+    <h3>Movies Added by Me:</h3>
+</div>
+    <section class="container my-5">
+        <div class="row">
+            {% for movie in user_movies %}
+            <div class="col-md-4">
+                <img src="{{ movie.poster.url }}" class="img-fluid" alt="{{ movie.title }}">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ movie.title }}</h1>
+                <a href="{% url 'movies:edit_movie' movie.id %}" class="btn btn-warning" >Edit</a> |
+                <a href="{% url 'movies:delete_movie' movie.id %}" class="btn btn-danger">Delete</a>
+                 {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

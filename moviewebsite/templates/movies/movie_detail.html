@@ -1,0 +1,45 @@
+{% extends 'movies/base.html' %}
+{% block title %}{{ movie.title }}{% endblock %}
+{% block content %}
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ movie.poster.url }}" class="img-fluid" alt="{{ movie.title }}">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ movie.title }}</h1>
+                <p>{{ movie.description }}</p>
+                <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                <p><strong>Actors:</strong> {{ movie.actors }}</p>
+                <a href="{{ movie.trailer_link }}" class="btn btn-primary" target="_blank">Watch Trailer</a>
+                {% if movie.added_by == user %}
+                        <a href="{% url 'movies:edit_movie' movie.id %}" class="btn btn-warning">Edit Movie</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+        <!-- Reviews Section -->
+        <section class="container my-5 review-section">
+            <h2>Reviews</h2>
+            <ul class="list-group mb-4">
+                {% for review in reviews %}
+                    <li class="list-group-item">
+                        <strong>{{ review.user.username }}:</strong> {{ review.text }}<br>
+                        <span class="badge badge-secondary">reviews: {{ review.rating }}/5</span>
+                        <p class="text-muted">{{ review.created_at|date:"F j, Y, g:i a" }}</p>
+                    </li>
+                {% empty %}
+                <p>No reviews yet.</p>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="container my-5 review-form-section">
+            <h3>Submit a Review</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </section>
+{% endblock %}
